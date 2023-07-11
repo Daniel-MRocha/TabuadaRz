@@ -1,0 +1,38 @@
+*{
+margin: 0;
+padding: 0;
+}
+html{
+    margin: auto;
+    padding-top: 30px ;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 50px; 
+    align-items: center;
+    width: 450px;
+    height: 450px;
+    border: 2px solid black;
+}
+
+#cab{
+    font-size: 60px;
+border: 2px solid black;
+}
+
+#principal{
+    display: inline-flex;
+    margin: auto;
+    border: 2px solid black;
+}
+#painel{
+    padding: 50px 50px;
+    border: 2px solid black;
+}
+
+#status{
+    border: 2px solid black;
+}
