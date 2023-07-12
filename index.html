@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
+    <script src="estrutural.js" defer></script>
     <title>Tabuada</title>
 </head>
 <body>
@@ -12,18 +13,18 @@
     </header>
     <main id="principal">
         <div id="painel">
-            <button class="bts" name="b1" value="1">1</button>
-            <button class="bts" name="b2" value="2">2</button>
-            <button class="bts" name="b3" value="3">3</button>
-            <button class="bts" name="b4" value="4">4</button>
-            <button class="bts" name="b5" value="5">5</button>
-            <button class="bts" name="b6" value="6">6</button>
-            <button class="bts" name="b7" value="7">7</button>
-            <button class="bts" name="b8" value="8">8</button>
-            <button class="bts" name="b9" value="9">9</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(1)" class="bts" name="b1" value="1">1</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(2)" class="bts" name="b2" value="2">2</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(3)" class="bts" name="b3" value="3">3</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(4)" class="bts" name="b4" value="4">4</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(5)" class="bts" name="b5" value="5">5</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(6)" class="bts" name="b6" value="6">6</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(7)" class="bts" name="b7" value="7">7</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(8)" class="bts" name="b8" value="8">8</button>
+            <button onclick="fatorEscolhido = escolher_tabuada(9)" class="bts" name="b9" value="9">9</button>
         </div>
-        <aside id="Status">
-            resultado 
+        <aside id="status">
+             
         </aside>
     </main>
 </body>
