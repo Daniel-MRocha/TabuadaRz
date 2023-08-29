@@ -10,6 +10,8 @@ function escolher_tabuada(num){
         btIniciar.innerText = "Iniciar"
         btIniciar.id = "iniciar"
         btIniciar.onclick = ()=>{
+            let status = document.getElementById("status")
+            status.style.display = "flex"
             document.getElementById("iniciar").remove()
             botoesResposta()}
         btIniciar.className = "bts"
@@ -18,7 +20,7 @@ function escolher_tabuada(num){
         
     document.getElementById("cab").innerHTML = num + "  X  ?"
     document.getElementById("painel").insertAdjacentElement("afterbegin",btIniciar)
-    document.getElementById("status").innerHTML = "Status" 
+    
 
     return num;
 }
@@ -139,17 +141,15 @@ function verifica_resposta(resultado,palpite){
     let status = document.getElementById("status")
     let aux = status.innerHTML
         if(resultado == palpite){
-                status.innerHTML = aux + " O "
-                acertos += 1
+                acertos += 1      
         }else{
-            status.innerHTML = aux + " X "
-                erros += 1
+            erros += 1   
         }
-    
+        status.innerHTML = "Acertos " + acertos + " " + "<br>Erros   " + erros
 }
 
 function verifica_final(){
-    if((erros + acertos)>5){
+    if((erros + acertos)>19){
         limpaBts()
         let painel = document.getElementById("painel")
         let reiniciar = document.createElement("button")
@@ -158,7 +158,7 @@ function verifica_final(){
         reiniciar.onclick = ()=>{ document.location = "index.html"}
         reiniciar.id = "reiniciar"
 
-        painel.innerHTML = "acertou: " + acertos + " Errou : " + erros
+        
         painel.insertAdjacentElement("beforeend",reiniciar)
 
 
