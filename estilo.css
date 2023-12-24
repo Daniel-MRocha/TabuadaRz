@@ -20,6 +20,7 @@ body{
 
 #cab{
     font-size: 60px;
+    color: darkolivegreen;
 border: 2px solid black;
 }
 
@@ -29,7 +30,11 @@ border: 2px solid black;
     border: 2px solid black;
 }
 #painel{
-    padding: 50px 50px;
+    width: 180px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid black;
 }
 
