@@ -54,7 +54,35 @@ function seed_botoesResposta(){
             contador++
         } 
     }
-    return opcoes
+
+    
+    return opcoes;
+}
+
+let algoritmo_embaralha_array = (array) => {
+    
+    let arrayInicial = [...array];
+    let arrayShuffle = new Array();
+
+   
+    let loopControl = arrayInicial.length;
+    let checkMinusOne = 0;
+    
+    while(loopControl != 0 ){
+    
+        let numero = Math.floor(Math.random() * (arrayInicial.length))
+       
+        if(arrayInicial[numero] != -1){
+        arrayShuffle.push(arrayInicial[numero])
+        arrayInicial[numero] = -1;
+        checkMinusOne++;
+        loopControl--;
+        }else if(checkMinusOne == arrayInicial.length){
+            loopControl = 0;
+        }    
+    }
+    return arrayShuffle
+
 }
 
 function botoesResposta(){
@@ -62,7 +90,8 @@ function botoesResposta(){
     let palpite;
     let lista_opcoes = seed_botoesResposta();
     let resultado = lista_opcoes[0];
-    lista_opcoes.sort(()=> .5 - Math.random());
+    lista_opcoes = algoritmo_embaralha_array(lista_opcoes);
+   //lista_opcoes.sort(()=> .5 - Math.random());
     
   
     let painel = document.getElementById("painel")
@@ -153,6 +182,8 @@ function verifica_final(){
         limpaBts()
         let painel = document.getElementById("painel")
         let reiniciar = document.createElement("button")
+        let placar = document.getElementById("cab")
+        placar.innerHTML = "Concluído!!"
         reiniciar.innerText= "reiniciar"
         reiniciar.className = "bts"
         reiniciar.onclick = ()=>{ document.location = "index.html"}
