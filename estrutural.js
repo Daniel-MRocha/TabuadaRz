@@ -8,13 +8,13 @@ let acertos = 0;
 function escolher_tabuada(num){
     let btIniciar = document.createElement("button")
         btIniciar.innerText = "Iniciar"
-        btIniciar.id = "iniciar"
+        btIniciar.id = "bts_iniciar"
         btIniciar.onclick = ()=>{
             let status = document.getElementById("status")
             status.style.display = "flex"
-            document.getElementById("iniciar").remove()
+            document.getElementById("bts_iniciar").remove()
             botoesResposta()}
-        btIniciar.className = "bts"
+        
     
     limpaBts()
         
@@ -28,10 +28,16 @@ function escolher_tabuada(num){
 
 //Remove os botões-----
 function limpaBts(){
+
+    let botaoIniciar = document.getElementById("bts_iniciar")
+        if(botaoIniciar){
+            document.getElementById("bts_iniciar").remove()
+        }
+    
     let apagar = document.getElementsByClassName("bts")
-    for(let i = 0 ; i < apagar.length; i+1){
-        apagar[i].remove();
-}
+        for(let i = 0 ; i < apagar.length; i+1){
+            apagar[i].remove();
+            }
 }
 
 
@@ -91,7 +97,7 @@ function botoesResposta(){
     let lista_opcoes = seed_botoesResposta();
     let resultado = lista_opcoes[0];
     lista_opcoes = algoritmo_embaralha_array(lista_opcoes);
-   //lista_opcoes.sort(()=> .5 - Math.random());
+   
     
   
     let painel = document.getElementById("painel")
@@ -185,9 +191,8 @@ function verifica_final(){
         let placar = document.getElementById("cab")
         placar.innerHTML = "Concluído!!"
         reiniciar.innerText= "reiniciar"
-        reiniciar.className = "bts"
-        reiniciar.onclick = ()=>{ document.location = "index.html"}
-        reiniciar.id = "reiniciar"
+        reiniciar.onclick = () =>{ document.location = "index.html"}
+        reiniciar.id = "btn_reiniciar"
 
         
         painel.insertAdjacentElement("beforeend",reiniciar)

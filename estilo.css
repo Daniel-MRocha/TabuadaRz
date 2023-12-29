@@ -15,34 +15,47 @@ body{
     align-items: center;
     width: 450px;
     height: 450px;
-    border: 2px solid black;
+    border: 2px solid rgb(93, 171, 33);
+    border-radius: 10px;
 }
 
 #cab{
     font-size: 60px;
     color: darkolivegreen;
-border: 2px solid black;
+
 }
 
 #principal{
     display: inline-flex;
     margin: auto;
-    border: 2px solid black;
+   
 }
 #painel{
-    width: 180px;
+    width: 200px;
     height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    border: 1px solid black;
+    
 }
 
 #status{
 
     width: 80px;
-    padding: 3px;
+    padding-left: 10px;
     font-size: 10px;
-    border: 2px solid black;
+    border-left: 2px solid rgb(93, 171, 33);
     align-items: center;
+}
+
+#bts_iniciar{
+    width: 80px;
+    height: 20px;
+}
+
+.bts{
+    width: 20px;
+    height: 20px;
+    margin: 3px;
 }
