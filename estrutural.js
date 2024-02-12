@@ -20,6 +20,7 @@ function escolher_tabuada(num){
         
     document.getElementById("cab").innerHTML = num + "  X  ?"
     document.getElementById("painel").insertAdjacentElement("afterbegin",btIniciar)
+    document.getElementById("painel").id="painel_palpites"
     
 
     return num;
@@ -88,7 +89,6 @@ let algoritmo_embaralha_array = (array) => {
         }    
     }
     return arrayShuffle
-
 }
 
 function botoesResposta(){
@@ -98,9 +98,8 @@ function botoesResposta(){
     let resultado = lista_opcoes[0];
     lista_opcoes = algoritmo_embaralha_array(lista_opcoes);
    
+    let painel = document.getElementById("painel_palpites")
     
-  
-    let painel = document.getElementById("painel")
 
     let bt1 = document.createElement("button")
     bt1.innerText= lista_opcoes[0]
@@ -186,13 +185,14 @@ function verifica_resposta(resultado,palpite){
 function verifica_final(){
     if((erros + acertos)>19){
         limpaBts()
-        let painel = document.getElementById("painel")
+        let painel = document.getElementById("painel_palpites")
         let reiniciar = document.createElement("button")
+        reiniciar.id = "bts_iniciar"
         let placar = document.getElementById("cab")
         placar.innerHTML = "Concluído!!"
         reiniciar.innerText= "reiniciar"
         reiniciar.onclick = () =>{ document.location = "index.html"}
-        reiniciar.id = "btn_reiniciar"
+        
 
         
         painel.insertAdjacentElement("beforeend",reiniciar)

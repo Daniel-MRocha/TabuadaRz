@@ -16,7 +16,7 @@ body{
     width: 450px;
     height: 450px;
     border: 2px solid rgb(93, 171, 33);
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 #cab{
@@ -34,10 +34,17 @@ body{
     width: 200px;
     height: 140px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    
+    border: 1px solid black;  
+}
+#painel_palpites{
+    width: 200px;
+    height: 140px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border: 1px solid black;  
 }
 
 #status{
@@ -50,12 +57,14 @@ body{
 }
 
 #bts_iniciar{
+
     width: 80px;
     height: 20px;
+    
 }
 
 .bts{
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     margin: 3px;
 }
