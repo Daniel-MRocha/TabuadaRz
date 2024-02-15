@@ -171,6 +171,30 @@ function botoesResposta(){
     verifica_final()
 }
 
+//-------Barra ------
+function barraTime(){
+    let interrompeTempo = 0
+    const status = document.getElementById("status")
+    const barra = document.createElement("div")
+    barra.id = "barra"
+
+    status.insertAdjacentElement("afterbegin",barra)
+    
+    let fatiaTempo = 140/20
+    let heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
+
+   let inicial = setInterval(()=>{
+        heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
+        barra.style.height = (parseInt(heiBarra) + fatiaTempo) + "px"
+        console.log(document.defaultView.getComputedStyle(barra,null).height)
+        if(parseInt(heiBarra) >= 133 ){
+            clearInterval(inicial)
+            heiBarra = null
+        }
+    },1000)
+
+}
+
 function verifica_resposta(resultado,palpite){
     let status = document.getElementById("status")
     let aux = status.innerHTML
@@ -180,7 +204,11 @@ function verifica_resposta(resultado,palpite){
             erros += 1   
         }
         status.innerHTML = "Acertos " + acertos + " " + "<br>Erros   " + erros
+        barraTime()
+        document.getElementById("barra").style.height = "0px"
 }
+
+
 
 function verifica_final(){
     if((erros + acertos)>19){
