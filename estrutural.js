@@ -91,12 +91,18 @@ let algoritmo_embaralha_array = (array) => {
     return arrayShuffle
 }
 
+
+
 function botoesResposta(){
     limpaBts()
     let palpite;
     let lista_opcoes = seed_botoesResposta();
     let resultado = lista_opcoes[0];
     lista_opcoes = algoritmo_embaralha_array(lista_opcoes);
+
+    
+    let relogio = barraTime()
+    
    
     let painel = document.getElementById("painel_palpites")
     
@@ -107,6 +113,7 @@ function botoesResposta(){
     bt1.value = lista_opcoes[0]
     bt1.addEventListener("click", () => { 
         palpite =  lista_opcoes[0] 
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -117,6 +124,7 @@ function botoesResposta(){
     bt2.value = lista_opcoes[1]
     bt2.addEventListener("click", () => { 
         palpite =  lista_opcoes[1] 
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -127,6 +135,7 @@ function botoesResposta(){
     bt3.value = lista_opcoes[2]
     bt3.addEventListener("click", () => { 
         palpite =  lista_opcoes[2] 
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -136,7 +145,8 @@ function botoesResposta(){
     bt4.className = "bts"
     bt4.value = lista_opcoes[3]
     bt4.addEventListener("click", () => { 
-        palpite =  lista_opcoes[3] 
+        palpite =  lista_opcoes[3]
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -146,7 +156,8 @@ function botoesResposta(){
     bt5.className = "bts"
     bt5.value = lista_opcoes[4]
     bt5.addEventListener("click", () => { 
-        palpite =  lista_opcoes[4] 
+        palpite =  lista_opcoes[4]
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -156,7 +167,8 @@ function botoesResposta(){
     bt6.className = "bts"
     bt6.value = lista_opcoes[5]
     bt6.addEventListener("click", () => { 
-        palpite =  lista_opcoes[5] 
+        palpite =  lista_opcoes[5]
+        clearInterval(relogio)
         verifica_resposta(resultado,palpite)
         botoesResposta();
     })
@@ -172,27 +184,29 @@ function botoesResposta(){
 }
 
 //-------Barra ------
+
+
 function barraTime(){
-    let interrompeTempo = 0
+    
+    
     const status = document.getElementById("status")
     const barra = document.createElement("div")
-    barra.id = "barra"
+          barra.id = "barra"
 
     status.insertAdjacentElement("afterbegin",barra)
     
     let fatiaTempo = 140/20
     let heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
 
-   let inicial = setInterval(()=>{
+   let relogio = setInterval(()=>{
         heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
         barra.style.height = (parseInt(heiBarra) + fatiaTempo) + "px"
-        console.log(document.defaultView.getComputedStyle(barra,null).height)
-        if(parseInt(heiBarra) >= 133 ){
-            clearInterval(inicial)
-            heiBarra = null
+        
+        if(parseInt(heiBarra) >= 133){
+            clearInterval(relogio)
         }
     },1000)
-
+    return relogio
 }
 
 function verifica_resposta(resultado,palpite){
@@ -204,11 +218,8 @@ function verifica_resposta(resultado,palpite){
             erros += 1   
         }
         status.innerHTML = "Acertos " + acertos + " " + "<br>Erros   " + erros
-        barraTime()
-        document.getElementById("barra").style.height = "0px"
+        
 }
-
-
 
 function verifica_final(){
     if((erros + acertos)>19){
