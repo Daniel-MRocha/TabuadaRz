@@ -4,7 +4,6 @@ let erros = 0;
 let acertos = 0;
 let pontos = 0 ;
 
-//------------------------------------------------------
 //Função que  escolhe o fator da tabuada a ser praticada
 function escolher_tabuada(num){
     let btIniciar = document.createElement("button")
@@ -41,7 +40,6 @@ function limpaBts(){
             }
 }
 
-//-------------------------------------------------------------------
 //Função que forma o array, com um valor correto e outros 5 alatórios
 function seed_botoesResposta(){
     
@@ -64,6 +62,7 @@ function seed_botoesResposta(){
     
     return opcoes;
 }
+
 
 let algoritmo_embaralha_array = (array) => {
     
@@ -90,6 +89,7 @@ let algoritmo_embaralha_array = (array) => {
     return arrayShuffle
 }
 
+//Botões com os valores dos palpites
 function botoesResposta(){
     limpaBts()
     let palpite;
@@ -180,7 +180,7 @@ function botoesResposta(){
     verifica_final()
 }
 
-//-------Barra ------
+//-------Barra do temporizador ------
 function barraTime(){
     
     const status = document.getElementById("status")
@@ -205,6 +205,8 @@ function barraTime(){
     },1000)
     return relogio
 }
+
+//Aferi a pontuação relacionando com tempo de resposta
 function pontuacaoPeloTempo(){
     let alturaDaBarra = parseInt(document.getElementById("barra").style.height.replace("px",""))
         if(alturaDaBarra <=70){
@@ -218,11 +220,12 @@ function pontuacaoPeloTempo(){
         }
 }
 
-function barraCor(altbar){
+//Muda a cor da barra conforme o tempo passa
+function barraCor(intAlturaDaBarra){
     let barra = document.getElementById("barra")
-    if(altbar <=70){
+    if(intAlturaDaBarra <=70){
         barra.style.backgroundColor = "darkolivegreen";
-    }else if(altbar >=71 && altbar <=119){
+    }else if(intAlturaDaBarra >=71 && intAlturaDaBarra <=119){
         barra.style.backgroundColor = "yellow";
     }else{
         barra.style.backgroundColor = "red";
