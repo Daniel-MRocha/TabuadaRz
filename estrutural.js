@@ -2,6 +2,7 @@
 let fatorEscolhido;
 let erros = 0;
 let acertos = 0;
+let pontos = 0 ;
 
 //------------------------------------------------------
 //Função que  escolhe o fator da tabuada a ser praticada
@@ -26,7 +27,6 @@ function escolher_tabuada(num){
     return num;
 }
 
-
 //Remove os botões-----
 function limpaBts(){
 
@@ -40,7 +40,6 @@ function limpaBts(){
             apagar[i].remove();
             }
 }
-
 
 //-------------------------------------------------------------------
 //Função que forma o array, com um valor correto e outros 5 alatórios
@@ -90,8 +89,6 @@ let algoritmo_embaralha_array = (array) => {
     }
     return arrayShuffle
 }
-
-
 
 function botoesResposta(){
     limpaBts()
@@ -184,10 +181,7 @@ function botoesResposta(){
 }
 
 //-------Barra ------
-
-
 function barraTime(){
-    
     
     const status = document.getElementById("status")
     const barra = document.createElement("div")
@@ -197,9 +191,12 @@ function barraTime(){
     
     let fatiaTempo = 140/20
     let heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
+    let auxColor = 0
 
    let relogio = setInterval(()=>{
         heiBarra = document.defaultView.getComputedStyle(barra,null).height.replace("px","")
+        auxColor = parseInt(heiBarra)
+        barraCor(auxColor)
         barra.style.height = (parseInt(heiBarra) + fatiaTempo) + "px"
         
         if(parseInt(heiBarra) >= 133){
@@ -208,16 +205,44 @@ function barraTime(){
     },1000)
     return relogio
 }
+function pontuacaoPeloTempo(){
+    let alturaDaBarra = parseInt(document.getElementById("barra").style.height.replace("px",""))
+        if(alturaDaBarra <=70){
+            return 0
+        }else if(alturaDaBarra >=71 && alturaDaBarra <=91){
+            return 3
+        }else if(alturaDaBarra>92 && alturaDaBarra <= 126){
+            return 5
+        }else{
+            return 7
+        }
+}
+
+function barraCor(altbar){
+    let barra = document.getElementById("barra")
+    if(altbar <=70){
+        barra.style.backgroundColor = "darkolivegreen";
+    }else if(altbar >=71 && altbar <=119){
+        barra.style.backgroundColor = "yellow";
+    }else{
+        barra.style.backgroundColor = "red";
+    }
+}
 
 function verifica_resposta(resultado,palpite){
     let status = document.getElementById("status")
+    let altBarra = pontuacaoPeloTempo()
     let aux = status.innerHTML
         if(resultado == palpite){
-                acertos += 1      
+                acertos += 1  
+                pontos += (10 - altBarra)     
         }else{
             erros += 1   
         }
-        status.innerHTML = "Acertos " + acertos + " " + "<br>Erros   " + erros
+        status.innerHTML = "Acertos " + acertos + " " + 
+                            "<br>Erros   " + erros + 
+                            "<br>barra: " + altBarra +
+                            "<br>Pontos:" + parseFloat(pontos /2 )
         
 }
 
