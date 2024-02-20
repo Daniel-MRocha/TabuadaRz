@@ -177,7 +177,7 @@ function botoesResposta(){
     painel.insertAdjacentElement("afterbegin",bt5)
     painel.insertAdjacentElement("afterbegin",bt6)
 
-    verifica_final()
+    verifica_final(relogio)
 }
 
 //-------Barra do temporizador ------
@@ -249,9 +249,10 @@ function verifica_resposta(resultado,palpite){
         
 }
 
-function verifica_final(){
+function verifica_final(numero){
     if((erros + acertos)>19){
         limpaBts()
+        clearInterval(numero)
         let painel = document.getElementById("painel_palpites")
         let reiniciar = document.createElement("button")
         reiniciar.id = "bts_iniciar"
