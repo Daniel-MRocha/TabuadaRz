@@ -58,11 +58,8 @@ function seed_botoesResposta(){
             contador++
         } 
     }
-
-    
     return opcoes;
 }
-
 
 let algoritmo_embaralha_array = (array) => {
     
@@ -112,6 +109,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[0] 
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -123,6 +121,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[1] 
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -134,6 +133,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[2] 
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -145,6 +145,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[3]
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -156,6 +157,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[4]
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -167,6 +169,7 @@ function botoesResposta(){
         palpite =  lista_opcoes[5]
         clearInterval(relogio)
         verifica_resposta(resultado,palpite)
+        document.getElementById("barra").remove()
         botoesResposta();
     })
 
@@ -183,8 +186,10 @@ function botoesResposta(){
 //-------Barra do temporizador ------
 function barraTime(){
     
+   
+    
     const status = document.getElementById("status")
-    const barra = document.createElement("div")
+    let barra = document.createElement("div")
           barra.id = "barra"
 
     status.insertAdjacentElement("afterbegin",barra)
@@ -201,6 +206,7 @@ function barraTime(){
         
         if(parseInt(heiBarra) >= 133){
             clearInterval(relogio)
+        
         }
     },1000)
     return relogio
@@ -235,18 +241,16 @@ function barraCor(intAlturaDaBarra){
 function verifica_resposta(resultado,palpite){
     let status = document.getElementById("status")
     let altBarra = pontuacaoPeloTempo()
-    let aux = status.innerHTML
         if(resultado == palpite){
                 acertos += 1  
                 pontos += (10 - altBarra)     
         }else{
             erros += 1   
         }
-        status.innerHTML = "Acertos " + acertos + " " + 
+       /*  status.innerHTML = "Acertos " + acertos + " " + 
                             "<br>Erros   " + erros + 
                             "<br>barra: " + altBarra +
-                            "<br>Pontos:" + parseFloat(pontos /2 )
-        
+                            "<br>Pontos:" + parseFloat(pontos /2 ) */
 }
 
 function verifica_final(numero){
