@@ -96,6 +96,7 @@ function botoesResposta(){
 
     
     let relogio = barraTime()
+    dadosDoStatus()
     
    
     let painel = document.getElementById("painel_palpites")
@@ -212,6 +213,34 @@ function barraTime(){
     return relogio
 }
 
+function dadosDoStatus(){
+    if(document.getElementById("dados")!=null){
+        document.getElementById("dados").remove()
+    }
+
+    let status = document.getElementById("status")
+    let statusdiv = document.createElement("div")
+        statusdiv.id = "dados"
+            status.insertAdjacentElement("beforeend",statusdiv)
+
+        let labAcertos       = document.createElement("span")
+        labAcertos.innerText="Acertos"
+    
+        let numeroAcertos    = document.createElement("span")
+        numeroAcertos.innerText = acertos
+    
+        let labPontos        = document.createElement("span")
+        labPontos.innerText = "Pontos"
+
+        let numeroPontos     = document.createElement("span")
+        numeroPontos.innerText = (pontos /2)
+
+    statusdiv.insertAdjacentElement("afterbegin",labAcertos)
+    statusdiv.insertAdjacentElement("afterbegin",numeroAcertos)
+    statusdiv.insertAdjacentElement("afterbegin",labPontos)
+    statusdiv.insertAdjacentElement("afterbegin",numeroPontos)
+}
+
 //Aferi a pontuação relacionando com tempo de resposta
 function pontuacaoPeloTempo(){
     let alturaDaBarra = parseInt(document.getElementById("barra").style.height.replace("px",""))
@@ -265,10 +294,6 @@ function verifica_final(numero){
         reiniciar.innerText= "reiniciar"
         reiniciar.onclick = () =>{ document.location = "index.html"}
         
-
-        
         painel.insertAdjacentElement("beforeend",reiniciar)
-
-
     }
 }
